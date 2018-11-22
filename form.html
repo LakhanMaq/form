@@ -1,60 +1,218 @@
 <html>
-    <head>
-
-    </head>
-    <body>
-    <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
-      <img alt="Virtual Machines"/>
-      Virtual Machines
-      <br>
-      Region:
-      <select>
-          <option>West US</option>
-      </select>        
-      Operating System:
-      <select>
-          <option>Windows</option>
-      </select>                   
-      Type:
-      <select>
-          <option>(OS Only)</option>
-        </select>          
-        TIER:
-        <select>
-            <option>something</option>
-        </select> 
+<head>
+<style>
+div,p{
+        display:inline-block;
+    }
+    #billing-radio-buttons
+    {
+        display: block;
+    }
+br,#tier-os-div,#disk-size-os-div
+{
+    width: 80%;
+}
+.dropdown
+{
+    width:30%;
+}
+#virtual-machines
+{
+    width:100px;
+}
+#billing-input1,#billing-input2
+{
+    width:15%;
+}
+.multiply
+{
+    width:10%;
+}
+</style>
+</head>
+<body>
+    <form oninput="x.value=parseInt(a.value)+parseInt(b.value)" id="cost">
+        <!-- icon -->
+        <!-- <div id="icon"> -->
+            <img src="https://img.icons8.com/windows/96/000000/monitor.png" alt="Virtual Machines" id="vmimage" name="vmimage" />
+            <div id="icon-header" name="icon-header"> Virtual Machines</div>
+        <!-- </div> -->
+        <br/>
+        <!-- Region -->
+        <div class="dropdown" id="dropdown-region">
+            <br/>
+            <div id="region-label" class="headtile" name="region-label"> Region:</div><br>
+            <div class="selectdiv">
+                <select id="region-select" name="region-select">
+                    <option>West US</option>
+                </select>
+            </div>
+        </div>
+        <!-- OS -->
+        <div class="dropdown" id="dropdown-OS">
+            <div id="OS-label" class="headtile" name="OS-label">Operating System:</div><br>
+            <div class="selectdiv">
+                <select id="OS-select" name="OS-select">
+                    <option>Windows</option>
+                </select>
+            </div>
+        </div>
+        <!-- TYPE -->
+        <div class="dropdown" id="dropdown-type">
+            <div id="type-label" class="headtile" name="type-label">Type:</div><br>
+            <div id="type-select" name="type-select">
+                <select>
+                    <option>(OS Only)</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <!-- Tier -->
+        <div class="dropdown" id="dropdown-tier">
+            <div id="tier-label" class="headtile" id="type-label">TIER:</div><br>
+            <div>
+                <select id="tier-select" name="tier-select">
+                    <option>Standard</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <!-- Instance -->
+        <div class="dropdown big" id="dropdown-instance">
+                <div id="instance-label" class="headtile" id="instance-label">INSTANCE:</div><br>
+                <div>
+                    <select id="instance-select" name="instance-select">
+                        <option>something</option>
+                    </select>
+                </div>
+            </div>
         <hr/>
-
-
-        Billing Option<br>
-        <p>qwewrswertsgkndflhsgrtttttttttttttttttttgjkfbsdfbgsertiusewryteuritwesrithswlerrtyseruigsergnsdfjsngliurethsrtserihesit
-            rtsertsoerihstrehlsjkrgnfliusrdgtsbdufghsregtndfhg.<a>click here</a>
-        </p>
-        <input type="radio"/>Value1
-        <input type="radio"/>Value2
-        <input type="radio"/>Value3
-        <br>
-        <input type="number" min=1> X <input type="number">  =<output name="" for=""></output>
-
-        <p>hello this is information<a>learn more</a></p>
+        <!-- Billing Option -->
+        <div class="div-option" id="billing-div">
+            <div class="title" name="billing">Billing Option</div>
+            <br/>
+            <div id="billing-para">
+                <p id="billing-info">qwewrswertsgkndflhsgrtttttttttttttttttttgjkfbsdfbgsertiusewryteuritwesrithswlerrtyseruigsergnsdfjsngliurethsrtserihesit
+                    rtsertsoerihstrehlsjkrgnfliusrdgtsbdufghsregtndfhg.
+                    <a id="billing-anchor" href="#">click here</a>
+                </p>
+            </div>
+            <br/>
+            <div id="billing-radio-buttons">
+                <input type="radio" name="billing-radio" />Value1 <br/>
+                <input type="radio" name="billing-radio" />Value2 <br/>
+                <input type="radio" name="billing-radio" />Value3 <br/>
+            </div>
+            <div id="billing-toggle">
+                <p id="toggle-text" name="toggle-text">qwewrswertsgkndflhsgrtttttttttttttttttttgjkfbsdfbgsertiusewryteuritwesrithswlerrtyseruigsergnsdfjsngliurethsrtserihesit
+                        rtsertsoerihstrehlsjkrgnfliusrdgtsbdufghsregtndfhg.
+                    <a id="toggle-anchor" href="#">tsertsoerihstrehlsjkrgnfliusrdgtsbdufghsre!</a>
+                </p>
+                <button>toggle</button>
+            </div>
+            <br/>
+            <div class="billing-calculation">
+                <div id="billing-input1">
+                    <input type="number" id="virtual-machines" name="virtual-machines" min=1> <br>
+                    <div class="billing-label">Virtual Machines</div>
+                    </div>
+                    <div class="multiply">x</div>
+                    <div id="billing-input2">
+                    <input type="number" id="time" name="time">
+                    <div class="billing-label"> <br>
+                            <select id="type">
+                                <option>Hours</option>
+                                <option>Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="billing-output">
+                    <p class="equalto">=</p>
+                    <output  id="bill"name="bill" for="virtual-machines time"></output>
+                    <div class="billing-label">Per Month</div>
+                </div>
+                <br/>
+                
+                <br/>
+                <div id="billing-infomation">
+                    <p id="bill-info">hello this is information
+                        <a>learn more</a>
+                    </p>
+                </div>
+                <br/>
+            </div>
+        </div>
         <hr>
-        Managed OS Disks<br>
-        TIER:
-        <select>
-            <option>Standard HDD</option>
-        </select>
-        Disk Size:
-        <select>
-            <option>option1</option>
-        </select>
-        <input type="button">ADD SNAPSHOT
-        <br>
-        <input type="number" > X US$ 1.54 =<output name="" for=""></output>
+        <!-- Manage OS Disks -->
+        <div class="div-option" id="manage-os-div">
+            <div class="title" name="mange-os">Managed OS Disks</div>
+            <br/>
+            <div id="tier-os-div">
+                <div class="manage-os-label">TIER:</div><br/>
+                <div class="manage-os-select">
+                    <select id="tier-os">
+                        <option>Standard HDD</option>
+                    </select>
+                </div>
+            </div>
+            <div id="disk-size-os-div">
+                <div class="manage-os-label"> Size:</div><br/>
+                <div class="manage-os-select">
+                    <select id="size-os">
+                        <option>option1</option>
+                    </select>
+                </div>
+                <div class="snapshot-toggle-div">
+                    <div id="toggle-snapshot">
+                        <input type="button" value="toggle2"/>
+                    </div>
+                    <div id="toggle-text-snapshot">ADD SNAPSHOT</div><br/>
+                </div>
+            </div>
+            <br/>
+            <div class="os-calculation">
+                <div id="os-input">
+                    <input type="number" id="disks" name="disks" min=1><p class="multiply">x</p>
+                    <p id="permonth" name="permonth" value="1.54">US$ 1.54</p>
+                    <p class="equalto">=</p>
+                    <output id="os" name="os" for="disks permonth"></output>
+                </div><br/>
+                <div id="os-label-div">
+                    <div class="os-label">Disks</div>
+                    <div class="os-label">
+                        Per Month
+                    </div>
+
+                </div><br/>
+
+            </div>
+        </div>
         <hr>
-        Storage Transaction <br>
-        <input type="number" > X US$ 0.0004 =<output name="" for=""></output>
-        <hr>
-        Sub-total <output name="" for=""></output>
+        <!-- Storage Transaction -->
+        <div class="div-option" id="storage-div">
+            <div class="title" name="storage">Managed OS Disks</div><br/>
+            <div class="storage-calculation">
+                <div id="storage-input">
+                    <input type="number" id="transactions" name="transactions" min=1> <p class="multiply">x</p>
+                    <p id="perunit" name="perunit" value="0.00004">US$ 0.0004</p>
+                    <p class="equalto">=</p>
+                    <output name="storage" id ="storage"for="transactions perunit"></output>
+                </div><br/>
+                <div id="storage-label-div">
+                    <div class="storage-label">Transaction Units (10,000 transaction)</div>
+                    <div class="storage-label">
+                        Per Unit
+                    </div>
+
+                </div><br/>
+            </div>
+        </div>
+        <hr> 
+        <div class="Sub-total-div">
+        <div id="Sub-total-label">Sub-total</div>
+        <div> US$ <output name="Sub-total" for="bill os storage"></output></div>
+        </div>
     </form>
 </body>
+
 </html>
