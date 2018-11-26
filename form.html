@@ -65,9 +65,9 @@
     <div class="dropdown" id="dropdown-OS">
         <div id="OS-label" class="headtile" name="OS-label">Operating System:</div>
         <br>
-        <div class="selectdiv">
+        <div>
             <select id="OS-select" name="OS-select">
-                <option>Windows</option>
+                <option value="">Select OS</option>
             </select>
         </div>
     </div>
@@ -75,9 +75,9 @@
     <div class="dropdown" id="dropdown-type">
         <div id="type-label" class="headtile" name="type-label">Type:</div>
         <br>
-        <div id="type-select" name="type-select">
-            <select>
-                <option>(OS Only)</option>
+        <div class="selectdiv">
+            <select id="type-select" name="type-select">
+                <option value="">Select type</option>
             </select>
         </div>
     </div>
@@ -258,3 +258,55 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function () {
+      //  alert("h");
+        load_json_data('OS-select');
+        alert("i");
+        function load_json_data(id, parent_id) {
+
+            var html_code = '';
+            $.getJSON('Vmachines.json', function (data) {
+
+                html_code += '<option value="">Select ' + id + '</option>';
+                $.each(data, function (key, value) {
+                    if (id == 'OS-select') {
+                        if (value.parent_id == '0') {
+                            html_code += '<option value="' + value.id + '">' + value.name + '</option>';
+                        }
+                    }
+                    else {
+                        if (value.parent_id == parent_id) {
+                            html_code += '<option value="' + value.id + '">' + value.name + '</option>';
+                        }
+                    }
+                });
+                $('#' + id).html(html_code);
+            });
+
+        }
+
+        $(document).on('change', '#OS-select', function () {
+            var country_id = $(this).val();
+            if (country_id != '') {
+                load_json_data('type-select', country_id);
+            }
+            else {
+                $('#type-select').html('<option value="">Select type</option>');
+                //$('#city').html('<option value="">Select city</option>');
+            }
+        });
+        /*
+        $(document).on('change', '#type-select', function(){
+         var state_id = $(this).val();
+         if(state_id != '')
+         {
+          load_json_data('city', state_id);
+         }
+         else
+         {
+          $('#city').html('<option value="">Select city</option>');
+         }
+        });*/
+    });
+</script>
